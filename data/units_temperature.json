@@ -1,0 +1,30 @@
+ [
+  {
+    "id": "UN101",
+    "ml_name": "si_K",
+    "name": "kelvin",
+    "symbol": "K",
+    "special": null,
+    "reference": null,
+    "systems": "SI"
+  },
+  {
+    "id": "UN102",
+    "ml_name": "si_degC",
+    "name": "celsius",
+    "symbol": "°C",
+    "special": null,
+    "reference": null,
+    "systems": "SI"
+  },
+  {
+    "id": "UN103",
+    "ml_name": "si_degF",
+    "name": "fahrenheit",
+    "symbol": "°F",
+    "special": null,
+    "reference": null,
+    "systems": "Imperial"
+  }
+]
+

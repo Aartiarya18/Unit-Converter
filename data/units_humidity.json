@@ -1,0 +1,29 @@
+[
+  {
+    "id": "UN201",
+    "ml_name": "si_percentRH",
+    "name": "percent relative humidity",
+    "symbol": "%",
+    "special": null,
+    "reference": null,
+    "systems": "SI"
+  },
+  {
+    "id": "UN202",
+    "ml_name": "si_fractionRH",
+    "name": "relative humidity (fraction)",
+    "symbol": "0–1",
+    "special": null,
+    "reference": null,
+    "systems": "SI"
+  },
+  {
+    "id": "UN203",
+    "ml_name": "si_gm3",
+    "name": "absolute humidity",
+    "symbol": "g/m³",
+    "special": null,
+    "reference": null,
+    "systems": "SI"
+  }
+]

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Metrology Unit Converter</title>
+</head>
+<body>
+  <h2>Metrology Unit Converter</h2>
+
+  <label for="quantityKind">Quantity Kind:</label>
+  <select id="quantityKind"></select><br><br>
+
+  <label for="value">Value:</label>
+  <input type="number" id="value"><br><br>
+
+  <label for="unit">Unit:</label>
+  <select id="unit"></select><br><br>
+
+  <button onclick="convert()">Convert</button>
+  <div id="result"></div>
+
+  <script>
+    async function loadQuantityKinds() {
+      const res = await fetch('api/quantity_kinds.php');
+      const data = await res.json();
+      const dropdown = document.getElementById('quantityKind');
+      data.forEach(q => {
+        const opt = document.createElement('option');
+        opt.value = q.ml_name;
+        opt.textContent = q.name;
+        dropdown.appendChild(opt);
+      });
+    }
+
+    async function loadUnits() {
+      const q = document.getElementById('quantityKind').value;
+      const res = await fetch(`api/units.php?quantity=${q}`);
+      const units = await res.json();
+      const unitDropdown = document.getElementById('unit');
+      unitDropdown.innerHTML = '';
+      units.forEach(u => {
+        const opt = document.createElement('option');
+        opt.value = u.symbol;
+        opt.textContent = u.name;
+        unitDropdown.appendChild(opt);
+      });
+    }
+
+    async function convert() {
+      const quantity = document.getElementById('quantityKind').value;
+      const value = document.getElementById('value').value;
+      const fromUnit = document.getElementById('unit').value;
+      const toUnit = prompt("Convert to which unit symbol (e.g. °C, °F, K)?");
+
+      const validate = await fetch('api/validate_value.php', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ quantity, value })
+      });
+      const check = await validate.json();
+      if (!check.valid) {
+        alert(check.message);
+        return;
+      }
+
+      const res = await fetch('api/convert.php', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ quantity, value, from_unit: fromUnit, to_unit: toUnit })
+      });
+      const result = await res.json();
+      document.getElementById('result').innerText = `Result: ${result.result}`;
+    }
+
+    document.getElementById('quantityKind').addEventListener('change', loadUnits);
+    loadQuantityKinds();
+  </script>
+</body>
+</html>

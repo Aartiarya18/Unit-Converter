@@ -1,0 +1,47 @@
+[
+  {
+    "id": "UN301",
+    "ml_name": "si_kg",
+    "name": "kilogram",
+    "symbol": "kg",
+    "special": null,
+    "reference": null,
+    "systems": "SI"
+  },
+  {
+    "id": "UN302",
+    "ml_name": "si_g",
+    "name": "gram",
+    "symbol": "g",
+    "special": null,
+    "reference": "kg",
+    "systems": "SI"
+  },
+  {
+    "id": "UN303",
+    "ml_name": "si_mg",
+    "name": "milligram",
+    "symbol": "mg",
+    "special": null,
+    "reference": "g",
+    "systems": "SI"
+  },
+  {
+    "id": "UN304",
+    "ml_name": "imperial_lb",
+    "name": "pound",
+    "symbol": "lb",
+    "special": null,
+    "reference": null,
+    "systems": "Imperial"
+  },
+  {
+    "id": "UN305",
+    "ml_name": "imperial_oz",
+    "name": "ounce",
+    "symbol": "oz",
+    "special": null,
+    "reference": "lb",
+    "systems": "Imperial"
+  }
+]
